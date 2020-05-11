@@ -1,10 +1,10 @@
-package com.kstu.kelbilim.ui.dashboard
+package com.kstu.kelbilim.ui.card
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class CardViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

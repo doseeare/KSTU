@@ -1,4 +1,4 @@
-package com.timelysoft.shelter.service
+package com.kstu.kelbilim.service
 
 
 data class Resource<out T>(val status: Status, val data: T?, val msg: String?) {
@@ -14,7 +14,7 @@ data class Resource<out T>(val status: Status, val data: T?, val msg: String?) {
 //        fun <T> refreshToken(msg: String = "", data: T? = null): Resource<T> {
 //            return Resource(Status.REFRESHTOKEN, data, msg)
 //        }
-        fun <T> netwrok(msg: String = "", data: T? = null): Resource<T> {
+        fun <T> network(msg: String = "", data: T? = null): Resource<T> {
             return Resource(Status.NETWORK, data, msg)
         }
 //

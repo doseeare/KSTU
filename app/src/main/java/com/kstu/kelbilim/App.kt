@@ -1,7 +1,7 @@
 package com.kstu.kelbilim
 
 import android.app.Application
-import com.timelysoft.shelter.service.AppPreferences
+import com.kstu.kelbilim.service.AppPreferences
 import org.koin.android.ext.koin.androidContext
 import com.kstu.kelbilim.di.viewModelModule
 import org.koin.android.ext.koin.androidLogger

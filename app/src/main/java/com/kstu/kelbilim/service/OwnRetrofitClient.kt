@@ -1,14 +1,13 @@
-package com.timelysoft.shelter.service
+package com.kstu.kelbilim.service
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.kstu.kelbilim.service.ApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object RetrofitClient {
+object OwnRetrofitClient {
 
     private val authInterceptor = Interceptor { chain ->
         val newUrl = chain.request().url

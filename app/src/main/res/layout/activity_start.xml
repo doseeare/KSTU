@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.start.StartActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter"
+        android:textColor="@color/whiteColor"
+        android:textSize="34sp" />
+
+    <Button
+        android:id="@+id/start_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/dark_button_bg"
+        android:text="Студент"
+        android:textColor="@color/whiteColor" />
+
+    <Button
+        android:id="@+id/start_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/dark_button_bg"
+        android:text="Преподователь "
+        android:textColor="@color/whiteColor" />
+</LinearLayout>

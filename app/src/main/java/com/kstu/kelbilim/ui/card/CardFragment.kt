@@ -1,4 +1,4 @@
-package com.kstu.kelbilim.ui.dashboard
+package com.kstu.kelbilim.ui.card
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kstu.kelbilim.R
 
-class DashboardFragment : Fragment() {
+class CardFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var dashboardViewModel: CardViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -20,8 +20,8 @@ class DashboardFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
+                ViewModelProviders.of(this).get(CardViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_card, container, false)
         val textView: TextView = root.findViewById(R.id.text_dashboard)
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

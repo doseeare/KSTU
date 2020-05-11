@@ -12,14 +12,34 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.kstu.kelbilim.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_card"
+        android:name="com.kstu.kelbilim.ui.card.CardFragment"
+        android:label="@string/title_card"
+        tools:layout="@layout/fragment_card" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_notification"
         android:name="com.kstu.kelbilim.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.kstu.kelbilim.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_schedule"
+        android:name="com.kstu.kelbilim.ui.schedule.ScheduleFragment"
+        android:label="@string/title_schedule"
+        tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/navigation_home_detail"
+        android:name="com.kstu.kelbilim.ui.home.HomeDetailFragment"
+        android:label="Новости"
+        tools:layout="@layout/fragment_home_detail" />
+    <fragment
+        android:id="@+id/navigation_schedule_weeks"
+        android:name="com.kstu.kelbilim.ui.schedule.ScheduleWeeksFragment"
+        android:label="fragment_schedule_weeks  "
+        tools:layout="@layout/fragment_schedule_weeks" />
 </navigation>
