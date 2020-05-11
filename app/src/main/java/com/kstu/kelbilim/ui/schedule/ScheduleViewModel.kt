@@ -13,5 +13,4 @@ class ScheduleViewModel : ViewModel() {
     fun getSchedule (headerMap: HashMap <String, String>, body: UserInfoModel) : LiveData <Resource<ScheduleResponse>>{
         return repository.getSchedule(headerMap, body)
     }
-
 }

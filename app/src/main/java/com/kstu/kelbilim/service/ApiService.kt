@@ -33,7 +33,7 @@ interface ApiService {
     suspend fun apartmentsDetail(@Path("id") id: Int, @Query("HotelIdent") hotelIdent: String): Response<ApartmentsDetailResponse>
 }*/
 
-    @GET("studyschedule")
+    @POST("studyschedule")
     suspend fun getSchedule(@HeaderMap headers: Map<String, String>, @Body body: UserInfoModel): Response<ScheduleResponse>
 
     @POST("authen")

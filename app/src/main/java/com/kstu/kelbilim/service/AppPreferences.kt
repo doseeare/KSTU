@@ -43,6 +43,11 @@ object AppPreferences {
         set(value) = preferences.edit {
             it.putString("studentName", value)
         }
+    var mobileLogin: String?
+        get() = preferences.getString("mobileLogin", "")
+        set(value) = preferences.edit {
+            it.putString("mobileLogin", value)
+        }
 
     var mobilePassword: String?
         get() = preferences.getString("mobilePassword", "")

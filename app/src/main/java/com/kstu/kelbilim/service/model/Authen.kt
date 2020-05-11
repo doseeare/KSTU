@@ -2,7 +2,6 @@ package com.kstu.kelbilim.service.model
 
 import com.google.gson.annotations.SerializedName
 import com.kstu.kelbilim.service.AppPreferences
-import com.kstu.kelbilim.service.model.Authen
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -16,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class UserInfoModel (
-	@SerializedName("StudentID") val studentID : Int,
-	@SerializedName("authen") val authen : Authen
+data class Authen (
+	@SerializedName("Login") val login : String? = AppPreferences.mobileLogin,
+	@SerializedName("Password") val password : String? = AppPreferences.mobilePassword
 )

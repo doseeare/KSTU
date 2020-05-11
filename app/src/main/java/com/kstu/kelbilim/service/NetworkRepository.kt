@@ -48,6 +48,7 @@ class NetworkRepository {
     fun getSchedule(headers: HashMap<String, String>, body: UserInfoModel) = liveData(Dispatchers.IO) {
         try {
             val response = AvnRetrofitClient.apiService().getSchedule(headers, body)
+            val code = response.code()
             when {
                 response.isSuccessful -> {
                     if (response.body() != null) {
@@ -61,7 +62,7 @@ class NetworkRepository {
                 }
             }
         } catch (e: Exception) {
-            emit(Resource.network("Проблеммы с подключением интернета", null))
+            emit(Resource.network("Проблемы с подключением интернета", null))
         }
     }
 

@@ -34,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
                             AppPreferences.studentId = data?.idStudent.toString()
                             AppPreferences.studentName = data?.studentName
                             AppPreferences.mobilePassword = data?.mobilePassword
+                            AppPreferences.mobileLogin = data?.mobileLogin
+
                             startActivity(Intent(this, MainActivity::class.java))
                         }
                         Status.ERROR -> {
