@@ -3,6 +3,7 @@ package com.kstu.kelbilim.service
 import com.kstu.kelbilim.service.model.AuthModel
 import com.kstu.kelbilim.service.model.UserInfoModel
 import com.kstu.kelbilim.service.response.AuthResponse
+import com.kstu.kelbilim.service.response.payments.PaymentsResponse
 import com.kstu.kelbilim.service.response.schedule.ScheduleResponse
 import retrofit2.Response
 import retrofit2.http.*
@@ -38,5 +39,8 @@ interface ApiService {
 
     @POST("authen")
     suspend fun login(@HeaderMap headers: Map<String, String>, @Body body: AuthModel): Response<AuthResponse>
+
+    @POST("Payment")
+    suspend fun getPayments(@HeaderMap headers: Map<String, String>, @Body body: UserInfoModel) : Response<PaymentsResponse>
 
 }

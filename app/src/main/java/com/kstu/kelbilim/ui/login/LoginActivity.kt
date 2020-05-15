@@ -30,13 +30,18 @@ class LoginActivity : AppCompatActivity() {
                     val msg = result.msg
                     when (result.status) {
                         Status.SUCCESS -> {
-                            AppPreferences.isLogined = true
-                            AppPreferences.studentId = data?.idStudent.toString()
-                            AppPreferences.studentName = data?.studentName
-                            AppPreferences.mobilePassword = data?.mobilePassword
-                            AppPreferences.mobileLogin = data?.mobileLogin
-
-                            startActivity(Intent(this, MainActivity::class.java))
+                            if (data!!.idStudent != 0){
+                                AppPreferences.isLogined = true
+                                AppPreferences.studentId = data.idStudent.toString()
+                                AppPreferences.studentName = data.studentName
+                                AppPreferences.mobilePassword = data.mobilePassword
+                                AppPreferences.mobileLogin = data.mobileLogin
+                                startActivity(Intent(this, MainActivity::class.java))
+                            }else{
+                                login_static.error = "Не правильный логин"
+                                password_static.error = "Не правильный пароль"
+                                Toast.makeText(this, "Не правильный логин или пароль", Toast.LENGTH_LONG).show()
+                            }
                         }
                         Status.ERROR -> {
                             Toast.makeText(this, msg, Toast.LENGTH_LONG).show()

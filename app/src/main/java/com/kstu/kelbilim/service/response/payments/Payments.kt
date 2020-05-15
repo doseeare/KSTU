@@ -1,4 +1,6 @@
-/* 
+import com.google.gson.annotations.SerializedName
+
+/*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -15,7 +17,7 @@ data class Payments (
 	@SerializedName("StudyYear") val studyYear : String,
 	@SerializedName("Kurs") val kurs : String,
 	@SerializedName("GroupName") val groupName : String,
-	@SerializedName("Contract") val contract : Int,
-	@SerializedName("Paid") val paid : Int,
-	@SerializedName("Dolg") val dolg : Int
+	@SerializedName("Contract") val contract : Double,
+	@SerializedName("Paid") val paid : Double,
+	@SerializedName("Dolg") val dolg : Double
 )

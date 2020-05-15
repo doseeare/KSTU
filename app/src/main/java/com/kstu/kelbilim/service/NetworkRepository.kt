@@ -65,5 +65,25 @@ class NetworkRepository {
             emit(Resource.network("Проблемы с подключением интернета", null))
         }
     }
+    fun getPayments(headers: HashMap<String, String>, body: UserInfoModel) = liveData(Dispatchers.IO) {
+        try {
+            val response = AvnRetrofitClient.apiService().getPayments(headers, body)
+            val code = response.code()
+            when {
+                response.isSuccessful -> {
+                    if (response.body() != null) {
+                        emit(Resource.success(response.body()))
+                    } else {
+                        emit(Resource.error("Не найдено"))
+                    }
+                }
+                else -> {
+                    emit(Resource.error("Не найдено"))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.network("Проблемы с подключением интернета", null))
+        }
+    }
 
 }

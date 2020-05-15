@@ -54,4 +54,12 @@ object AppPreferences {
         set(value) = preferences.edit {
             it.putString("mobilePassword", value)
         }
+
+    fun exit() {
+        isLogined = false
+        studentId = null
+        studentName = null
+        mobilePassword = null
+        mobileLogin = null
+    }
 }

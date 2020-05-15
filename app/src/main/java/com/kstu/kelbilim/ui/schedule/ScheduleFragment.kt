@@ -38,8 +38,7 @@ class ScheduleFragment : Fragment() {
         viewModel.getSchedule(
             header.header("97"),
             UserInfoModel(AppPreferences.studentId!!.toInt(), Authen())
-        )
-            .observe(viewLifecycleOwner, Observer { result ->
+        ).observe(viewLifecycleOwner, Observer { result ->
                 val data = result.data
                 val msg = result.msg
                 when (result.status) {
@@ -50,12 +49,9 @@ class ScheduleFragment : Fragment() {
                                 ScheduleWeeksFragment(it.scheduleDiciples),
                                 data.weekDays[index].weekDayShortName
                             )
-
                         }
-
                         schedule_vp.adapter = adapter
                         schedule_tabs!!.setupWithViewPager(schedule_vp)
-
                     }
                     Status.ERROR -> {
                         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
@@ -70,5 +66,4 @@ class ScheduleFragment : Fragment() {
                 }
             })
     }
-
 }
