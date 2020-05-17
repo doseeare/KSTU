@@ -1,7 +1,12 @@
 package com.kstu.kelbilim.service
 
-import com.timelysoft.shelter.service.request.AuthModel
-import com.timelysoft.shelter.service.response.*
+import com.kstu.kelbilim.service.model.AuthModel
+import com.kstu.kelbilim.service.model.StudyCardModel
+import com.kstu.kelbilim.service.model.UserInfoModel
+import com.kstu.kelbilim.service.response.AuthResponse
+import com.kstu.kelbilim.service.response.payments.PaymentsResponse
+import com.kstu.kelbilim.service.response.schedule.ScheduleResponse
+import com.kstu.kelbilim.service.response.studycard.StudyCardResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -18,10 +23,6 @@ interface ApiService {
     @GET("Hotels/GetManagersHotels")
     suspend fun hotels(): Response<List<HotelResponse>>
 
-    @Headers("")
-    @GET("Reservation")
-    suspend fun reservation(@QueryMap options: Map<String, String>): Response<CommonModelPagination<ReservationResponse>>
-
     @GET("Apartments")
     suspend fun apartments(@QueryMap options: Map<String, String>): Response<CommonModelPagination<ApartmentsResponse>>
 
@@ -34,4 +35,16 @@ interface ApiService {
     @GET("Apartments/{id}")
     suspend fun apartmentsDetail(@Path("id") id: Int, @Query("HotelIdent") hotelIdent: String): Response<ApartmentsDetailResponse>
 }*/
+
+    @POST("studyschedule")
+    suspend fun getSchedule(@HeaderMap headers: Map<String, String>, @Body body: UserInfoModel): Response<ScheduleResponse>
+
+    @POST("authen")
+    suspend fun login(@HeaderMap headers: Map<String, String>, @Body body: AuthModel): Response<AuthResponse>
+
+    @POST("Payment")
+    suspend fun getPayments(@HeaderMap headers: Map<String, String>, @Body body: UserInfoModel) : Response<PaymentsResponse>
+
+    @POST ("studycard")
+    suspend fun getStudyCard(@HeaderMap headers: Map<String, String>, @Body body: StudyCardModel) : Response<StudyCardResponse>
 }

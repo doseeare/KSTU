@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:orientation="vertical"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_imageview"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="@dimen/marginHorizontal"
+            android:layout_marginTop="@dimen/marginHorizontal"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_person"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginHorizontal"
+            android:layout_marginEnd="@dimen/marginHorizontal"
+            android:textColor="@color/whiteColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/profile_imageview"
+            app:layout_constraintTop_toTopOf="@id/profile_imageview"
+            tools:text="Бексултанов Дастан Бексултанович" />
+
+        <TextView
+            android:id="@+id/profile_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/profile_name"
+            app:layout_constraintStart_toStartOf="@id/profile_name"
+            app:layout_constraintTop_toBottomOf="@id/profile_name"
+            tools:text="ТОСВТ 9-1-17" />
+
+        <Button
+            android:id="@+id/profile_exit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/marginHorizontal"
+            android:layout_marginTop="@dimen/marginHorizontal"
+            android:background="@drawable/bg_button_red"
+            android:text="Выход"
+            android:textColor="@color/whiteColor"
+            app:layout_constraintTop_toBottomOf="@id/profile_imageview" />
+
+        <TextView
+            android:id="@+id/profile_study"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/marginHorizontal"
+            android:layout_marginTop="19dp"
+            android:text="Оплата за обучение"
+            android:textColor="@color/whiteColor"
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_exit_btn" />
+
+        <TextView
+            android:id="@+id/profile_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/marginHorizontal"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/whiteColor"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/profile_study"
+            tools:text="Код платежа: 201052679801" />
+
+        <TextView
+            android:id="@+id/profile_debt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/marginHorizontal"
+            android:textColor="@color/whiteColor"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/profile_code"
+            tools:text="Долг 0.0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_payments_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginHorizontal"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/profile_debt"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_profile" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

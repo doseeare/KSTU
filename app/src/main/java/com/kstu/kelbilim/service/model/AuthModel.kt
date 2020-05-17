@@ -1,4 +1,4 @@
-package com.kstu.kelbilim.service.response
+package com.kstu.kelbilim.service.model
 
 import com.google.gson.annotations.SerializedName
 

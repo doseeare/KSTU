@@ -1,8 +1,7 @@
-package com.timelysoft.shelter.service
+package com.kstu.kelbilim.service
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.timelysoft.shelter.extension.timeToLong
 
 object AppPreferences {
 
@@ -21,21 +20,6 @@ object AppPreferences {
         editor.apply()
     }
 
-    fun clear() {
-        isLogined = false
-        token = ""
-        refreshToken = ""
-        login = ""
-        tokenRefreshTime = 1000L
-    }
-
-    fun update(tokenResponse: TokenResponse) {
-        token = tokenResponse.accessToken
-        refreshToken = tokenResponse.refreshToken
-        tokenRefreshTime = tokenResponse.expiresUtc.timeToLong()
-
-    }
-
     var isLogined: Boolean
         get() = preferences.getBoolean("isLogined", false)
         set(value) = preferences.edit {
@@ -47,39 +31,35 @@ object AppPreferences {
         set(value) = preferences.edit {
             it.putString("token", value)
         }
-    var login: String?
-        get() = preferences.getString("login", "")
+
+    var studentId: String?
+        get() = preferences.getString("studentId", "")
         set(value) = preferences.edit {
-            it.putString("login", value)
+            it.putString("studentId", value)
         }
 
-    var started: Boolean
-        get() = preferences.getBoolean("started", false)
-        set(value) = preferences.edit() {
-            it.putBoolean("started", value)
+    var studentName: String?
+        get() = preferences.getString("studentName", "")
+        set(value) = preferences.edit {
+            it.putString("studentName", value)
+        }
+    var mobileLogin: String?
+        get() = preferences.getString("mobileLogin", "")
+        set(value) = preferences.edit {
+            it.putString("mobileLogin", value)
         }
 
-    var refreshToken: String?
-        get() = preferences.getString("refreshToken", "")
+    var mobilePassword: String?
+        get() = preferences.getString("mobilePassword", "")
         set(value) = preferences.edit {
-            it.putString("refreshToken", value)
+            it.putString("mobilePassword", value)
         }
 
-    var fullName: String?
-        get() = preferences.getString("fullName", "")
-        set(value) = preferences.edit {
-            it.putString("fullName", value)
-        }
-
-    var hotelIdent: String?
-        get() = preferences.getString("hotelIdent", "")
-        set(value) = preferences.edit {
-            it.putString("hotelIdent", value)
-        }
-
-    var tokenRefreshTime: Long
-        get() = preferences.getLong("tokenRefreshTime", 1000)
-        set(value) = preferences.edit {
-            it.putLong("tokenRefreshTime", value)
-        }
+    fun exit() {
+        isLogined = false
+        studentId = null
+        studentName = null
+        mobilePassword = null
+        mobileLogin = null
+    }
 }

@@ -1,29 +1,19 @@
-package com.timelysoft.shelter.ui.login
+package com.kstu.kelbilim.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.timelysoft.shelter.extension.timeToLong
-import com.timelysoft.shelter.service.AppPreferences
-import com.timelysoft.shelter.service.NetworkRepository
-import com.timelysoft.shelter.service.Resource
-import com.timelysoft.shelter.service.request.AuthModel
-import com.timelysoft.shelter.service.response.TokenResponse
+import com.kstu.kelbilim.service.NetworkRepository
+import com.kstu.kelbilim.service.Resource
+import com.kstu.kelbilim.service.model.AuthModel
+import com.kstu.kelbilim.service.response.AuthResponse
 
 
 class LoginViewModel : ViewModel() {
+
     private val repository = NetworkRepository()
 
-    fun login(login: String, password: String): LiveData<Resource<TokenResponse>> {
-        return repository.login(AuthModel(login, password))
-    }
-
-    fun saveToken(token: TokenResponse, login: String) {
-        AppPreferences.isLogined = true
-        AppPreferences.login = login
-        AppPreferences.token = token.accessToken
-        AppPreferences.refreshToken = token.refreshToken
-        AppPreferences.tokenRefreshTime = token.expiresUtc.timeToLong()
-        AppPreferences.fullName = token.fullName
+    fun login (headerMap: HashMap <String, String>, login : String, password : String) : LiveData <Resource<AuthResponse>>{
+        return repository.login(headerMap, AuthModel(login, password))
     }
 
 }
