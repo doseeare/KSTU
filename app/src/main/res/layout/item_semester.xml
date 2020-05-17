@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="77dp"
+    android:layout_height="33dp"
+    android:id="@+id/semester_cardview"
+    android:layout_margin="14dp"
+    app:cardBackgroundColor="@color/dark_bg"
+    app:cardCornerRadius="16dp">
+
+    <TextView
+        android:id="@+id/semester_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@color/whiteColor"
+        tools:text="1 сем" />
+
+</androidx.cardview.widget.CardView>

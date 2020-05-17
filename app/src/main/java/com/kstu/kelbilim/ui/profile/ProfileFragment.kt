@@ -4,25 +4,22 @@ import Payments
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.kstu.kelbilim.R
 import com.kstu.kelbilim.adapter.profile.ProfileAdapter
-import com.kstu.kelbilim.adapter.viewpager.FragmentVPAdapter
 import com.kstu.kelbilim.common.RetrofitHeader
 import com.kstu.kelbilim.service.AppPreferences
 import com.kstu.kelbilim.service.Status
 import com.kstu.kelbilim.service.model.Authen
 import com.kstu.kelbilim.service.model.UserInfoModel
-import com.kstu.kelbilim.ui.schedule.ScheduleWeeksFragment
 import com.kstu.kelbilim.ui.start.StartActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_schedule.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -85,10 +82,9 @@ class ProfileFragment : Fragment() {
                     AppPreferences.exit()
                     startActivity(Intent(context, StartActivity::class.java))
                 }
-                .setNegativeButton("нет"){dialog, which ->
+                .setNegativeButton("нет") { dialog, which ->
                     dialog.dismiss()
                 }
-
                 .show()
         }
     }

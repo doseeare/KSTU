@@ -20,7 +20,7 @@ class HomeAdapter(
 
     override fun bind(item: HomeResponse, holder: ViewHolder) {
         holder.itemView.home_title.text = item.title
-        ViewCompat.setTransitionName(holder.itemView.home_imageview, "image")
+        ViewCompat.setTransitionName(holder.itemView.home_imageview, "image_circle")
 
         holder.itemView.setOnClickListener {
             listener.homeItemClicked(item, holder.itemView.home_imageview)

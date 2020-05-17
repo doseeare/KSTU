@@ -1,6 +1,7 @@
 package com.kstu.kelbilim.di
 
 
+import com.kstu.kelbilim.ui.card.CardViewModel
 import com.kstu.kelbilim.ui.login.LoginViewModel
 import com.kstu.kelbilim.ui.profile.ProfileViewModel
 import com.kstu.kelbilim.ui.schedule.ScheduleViewModel
@@ -12,4 +13,5 @@ val viewModelModule = module {
     viewModel { LoginViewModel() }
     viewModel { ScheduleViewModel() }
     viewModel { ProfileViewModel() }
+    viewModel { CardViewModel() }
 }

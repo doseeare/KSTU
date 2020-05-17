@@ -12,25 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/static_card"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_imageview"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_marginStart="@dimen/marginHorizontal"
             android:layout_marginTop="@dimen/marginHorizontal"
-            app:cardCornerRadius="90dp"
-            app:cardPreventCornerOverlap="false"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_person"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/profile_imageview"
-                android:layout_width="match_parent"
-                android:scaleType="centerCrop"
-                android:layout_height="match_parent"
-                android:background="@drawable/ic_person" />
-
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/profile_name"
@@ -41,8 +32,8 @@
             android:textColor="@color/whiteColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/static_card"
-            app:layout_constraintTop_toTopOf="@id/static_card"
+            app:layout_constraintStart_toEndOf="@id/profile_imageview"
+            app:layout_constraintTop_toTopOf="@id/profile_imageview"
             tools:text="Бексултанов Дастан Бексултанович" />
 
         <TextView
@@ -65,7 +56,7 @@
             android:background="@drawable/bg_button_red"
             android:text="Выход"
             android:textColor="@color/whiteColor"
-            app:layout_constraintTop_toBottomOf="@id/static_card" />
+            app:layout_constraintTop_toBottomOf="@id/profile_imageview" />
 
         <TextView
             android:id="@+id/profile_study"

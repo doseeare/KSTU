@@ -4,28 +4,36 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.kstu.kelbilim.R
+import com.kstu.kelbilim.adapter.viewpager.FragmentVPAdapter
+import kotlinx.android.synthetic.main.fragment_card.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CardFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: CardViewModel
+    private val cardViewModel: CardViewModel by viewModel()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(CardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_card, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_card, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+    }
+
+    private fun initViews() {
+        val vpAdapter = FragmentVPAdapter(childFragmentManager)
+        vpAdapter.addFragment(CourseFragment(1), "1 курс")
+        vpAdapter.addFragment(CourseFragment(2), "2 курс")
+        vpAdapter.addFragment(CourseFragment(3), "3 курс")
+
+        card_vp.adapter = vpAdapter
+        card_tabs!!.setupWithViewPager(card_vp)
     }
 }

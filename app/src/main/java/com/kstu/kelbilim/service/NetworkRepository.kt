@@ -2,6 +2,7 @@ package com.kstu.kelbilim.service
 
 import androidx.lifecycle.liveData
 import com.kstu.kelbilim.service.model.AuthModel
+import com.kstu.kelbilim.service.model.StudyCardModel
 import com.kstu.kelbilim.service.model.UserInfoModel
 import kotlinx.coroutines.Dispatchers
 
@@ -45,45 +46,70 @@ class NetworkRepository {
         }
     }
 
-    fun getSchedule(headers: HashMap<String, String>, body: UserInfoModel) = liveData(Dispatchers.IO) {
-        try {
-            val response = AvnRetrofitClient.apiService().getSchedule(headers, body)
-            val code = response.code()
-            when {
-                response.isSuccessful -> {
-                    if (response.body() != null) {
-                        emit(Resource.success(response.body()))
-                    } else {
+    fun getSchedule(headers: HashMap<String, String>, body: UserInfoModel) =
+        liveData(Dispatchers.IO) {
+            try {
+                val response = AvnRetrofitClient.apiService().getSchedule(headers, body)
+                val code = response.code()
+                when {
+                    response.isSuccessful -> {
+                        if (response.body() != null) {
+                            emit(Resource.success(response.body()))
+                        } else {
+                            emit(Resource.error("Не найдено"))
+                        }
+                    }
+                    else -> {
                         emit(Resource.error("Не найдено"))
                     }
                 }
-                else -> {
-                    emit(Resource.error("Не найдено"))
-                }
+            } catch (e: Exception) {
+                emit(Resource.network("Проблемы с подключением интернета", null))
             }
-        } catch (e: Exception) {
-            emit(Resource.network("Проблемы с подключением интернета", null))
         }
-    }
-    fun getPayments(headers: HashMap<String, String>, body: UserInfoModel) = liveData(Dispatchers.IO) {
-        try {
-            val response = AvnRetrofitClient.apiService().getPayments(headers, body)
-            val code = response.code()
-            when {
-                response.isSuccessful -> {
-                    if (response.body() != null) {
-                        emit(Resource.success(response.body()))
-                    } else {
+
+    fun getPayments(headers: HashMap<String, String>, body: UserInfoModel) =
+        liveData(Dispatchers.IO) {
+            try {
+                val response = AvnRetrofitClient.apiService().getPayments(headers, body)
+                val code = response.code()
+                when {
+                    response.isSuccessful -> {
+                        if (response.body() != null) {
+                            emit(Resource.success(response.body()))
+                        } else {
+                            emit(Resource.error("Не найдено"))
+                        }
+                    }
+                    else -> {
                         emit(Resource.error("Не найдено"))
                     }
                 }
-                else -> {
-                    emit(Resource.error("Не найдено"))
-                }
+            } catch (e: Exception) {
+                emit(Resource.network("Проблемы с подключением интернета", null))
             }
-        } catch (e: Exception) {
-            emit(Resource.network("Проблемы с подключением интернета", null))
         }
-    }
+
+    fun getStudyCard(headers: HashMap<String, String>, body: StudyCardModel) =
+        liveData(Dispatchers.IO) {
+            try {
+                val response = AvnRetrofitClient.apiService().getStudyCard(headers, body)
+                val code = response.code()
+                when {
+                    response.isSuccessful -> {
+                        if (response.body() != null) {
+                            emit(Resource.success(response.body()))
+                        } else {
+                            emit(Resource.error("Не найдено"))
+                        }
+                    }
+                    else -> {
+                        emit(Resource.error("Не найдено"))
+                    }
+                }
+            } catch (e: Exception) {
+                emit(Resource.network("Проблемы с подключением интернета", null))
+            }
+        }
 
 }

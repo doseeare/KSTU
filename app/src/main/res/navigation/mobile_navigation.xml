@@ -42,4 +42,9 @@
         android:name="com.kstu.kelbilim.ui.schedule.ScheduleWeeksFragment"
         android:label="fragment_schedule_weeks  "
         tools:layout="@layout/fragment_schedule_weeks" />
+    <fragment
+        android:id="@+id/navigation_course_fragment"
+        android:name="com.kstu.kelbilim.ui.card.CourseFragment"
+        android:label="fragment_course"
+        tools:layout="@layout/fragment_course" />
 </navigation>
