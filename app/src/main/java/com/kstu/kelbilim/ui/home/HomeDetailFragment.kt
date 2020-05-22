@@ -7,9 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kstu.kelbilim.R
-import com.kstu.kelbilim.adapter.home.HomeAdapter
-import com.kstu.kelbilim.service.response.HomeResponse
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.kstu.kelbilim.adapter.home.HomeDetailAdapter
+import com.kstu.kelbilim.adapter.viewpager.ImageVPAdapter
+import com.kstu.kelbilim.utils.MyUtils
+import kotlinx.android.synthetic.main.fragment_home_detail.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,53 +19,93 @@ import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 
 class HomeDetailFragment : Fragment() {
+    private var detailUrl = ""
+    private var title = ""
+    private val images = ArrayList<String>()
+    private val contents = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-   //     initViews()
+        initArguments()
+        parseNews()
     }
 
-  /*  private fun parseNews() {
-        val newsItem = ArrayList<HomeResponse>()
-        val webUrl = "https://kstu.kg"
-        CoroutineScope(Dispatchers.IO).launch {
-            val document = Jsoup.connect(webUrl).get()
-            val data : Elements? = document.select("div.grid__item")
+    private fun initArguments() {
+        detailUrl = try {
+            arguments?.getString("detailUrl")
+        } catch (e: Exception) {
 
-            val dataSize = data!!.size
-            for (i in 0 until dataSize){
-                val imgUrl = webUrl + data.select("img.newsbox-header-image")
-                    .eq(i)
-                    .attr("src")
+        } as String
+        title = try {
+            arguments?.getString("title")
+        } catch (e: Exception) {
 
-                val title = data.select("h4.newsbox-title")
-                    .eq(i)
-                    .text()
-                newsItem.add(HomeResponse(imgUrl, title))
-                Log.d("ITEMS","img: $imgUrl, title: $title")
+        } as String
+    }
 
+
+    private fun parseNews() {
+        if (!MyUtils.isInternetAvailable()) {
+            val webUrl = "https://kstu.kg"
+
+            CoroutineScope(Dispatchers.IO).launch {
+
+                val document = Jsoup.connect(detailUrl).get()
+                val imageData: Elements? = document.select("div.news-img-wrap")
+                val contentData: Elements? = document.select("div.small-12.columns.in-text")
+
+                // imagePath on website and count of imges
+                val imagePath = imageData!!.select("div.outer")
+                    .select("div.mediaelement.mediaelement-image")
+                    .select("a")
+                val imageCount = imagePath.size
+
+                // contentPath on website and count of text content on the page
+                val contentPath = contentData!!
+                    .select("div")
+                    .select("p")
+                val contentCount = contentPath.size
+
+                for (i in 0 until imageCount) {
+                    val imgUrl = webUrl + imagePath
+                        .eq(i)
+                        .attr("href")
+                    images.add(imgUrl)
+                }
+
+                for (i in 0 until contentCount) {
+                    val contentText = contentPath
+                        .eq(i)
+                        .text()
+                    if(contentText.isNotEmpty()){
+                        contents.add(contentText)
+                    }
+                }
+
+                val postDate =
+                    document.select("span.news-list-date")
+                        .select("time")
+                        .attr("datetime")
+
+                withContext(Dispatchers.Main) {
+                    home_detail_vp.adapter = ImageVPAdapter(requireContext(), images)
+                    home_detail_title.text = title
+                    home_detail_rv.adapter = HomeDetailAdapter(contents)
+                    home_detail_date.text = postDate.replace('-', '.')
+
+                    Log.d("homeDetail", "postDate: $postDate, img: $images, contents: $contents")
+                }
             }
-            withContext(Dispatchers.Main){
-                homeAdapter = HomeAdapter(newsItem, listener)
-                home_rv.adapter = homeAdapter
-            }
+        } else {
+
         }
-
-
-    }*/
-
-
-    private fun initViews() {
-        val newsItem = ArrayList<HomeResponse>()
-        val webUrl = "https://kstu.kg"
     }
 
 }

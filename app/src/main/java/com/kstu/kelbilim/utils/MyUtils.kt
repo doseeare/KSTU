@@ -4,10 +4,20 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import java.lang.Exception
+import java.net.InetAddress
 import java.util.regex.Pattern
 
 object MyUtils {
+
+    fun isInternetAvailable(): Boolean {
+        return try {
+            val ipAddr: InetAddress = InetAddress.getByName("google.com")
+            //You can replace it with your name
+            !ipAddr.equals("")
+        } catch (e: Exception) {
+            false
+        }
+    }
 
     fun toMyDate(date: String): String {
         return try {
@@ -77,7 +87,5 @@ object MyUtils {
         val matcher = pattern.matcher(text)
         return matcher.matches()
     }
-
-
 
 }

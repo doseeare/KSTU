@@ -27,7 +27,7 @@ class ImageVPAdapter(private val context: Context, private val imageUrls: ArrayL
         try {
             Glide.with(imageView)
                 .load(imageUrls[position])
-                .thumbnail(Glide.with(imageView).load(R.drawable.ic_placeholder))
+                .thumbnail(Glide.with(imageView).load(R.drawable.ic_animeted_placeholder))
                 .centerCrop()
                 .into(imageView)
             container.addView(imageView)

@@ -37,7 +37,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initViews(data: PaymentsResponse) {
-        profile_name.text = data!!.fullName
+        profile_name.text = data.fullName
         profile_code.text = "Код платежа: ${data.account}"
         profile_debt.text = "Долг: ${data.dolg}"
         profile_group.text = data.groupName
@@ -61,10 +61,10 @@ class ProfileFragment : Fragment() {
                 Status.SUCCESS -> {
                     profile_name.text = data!!.fullName
                     profile_code.text = "Код платежа: ${data.account}"
-                    profile_debt.text = "Долг: ${data.dolg}"
+                    profile_debt.text = "Долг: ${data.dolg.toInt()}"
                     profile_group.text = data.groupName
                     profile_payments_rv.adapter =
-                        ProfileAdapter(data.payments as ArrayList<Payments>)
+                        ProfileAdapter(data.payments)
                 }
                 Status.ERROR -> {
                     Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
@@ -79,6 +79,7 @@ class ProfileFragment : Fragment() {
             }
 
         })
+
         Glide.with(requireContext())
             .load("http://85.113.28.182:8086/api/studentphoto/" + AppPreferences.studentId + "/" + AppPreferences.mobileLogin + "/" + AppPreferences.mobilePassword)
             .error(R.drawable.ic_person)

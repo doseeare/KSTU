@@ -11,6 +11,6 @@ data class PaymentsResponse (
 	@SerializedName("GroupName") val groupName : String,
 	@SerializedName("Dolg") val dolg : Double,
 	@SerializedName("Account") val account : String,
-	@SerializedName("Payments") val payments : List<Payments>,
+	@SerializedName("Payments") val payments : ArrayList<Payments>,
 	@SerializedName("PaymentDates") val paymentDates : List<PaymentDates>
 )

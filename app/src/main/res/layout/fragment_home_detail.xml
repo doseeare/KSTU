@@ -16,7 +16,6 @@
             android:id="@+id/home_detail_vp"
             android:layout_width="match_parent"
             android:layout_height="256dp"
-            android:background="@drawable/test_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -24,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/marginHorizontal"
-            android:text="20.05.2019"
+            tools:text="20.05.2019"
             android:textColor="@color/whiteColor"
             android:textSize="18sp" />
 
@@ -33,21 +32,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/marginHorizontal"
-            android:text="@string/test_title"
+            tools:text="@string/test_title"
             android:textColor="@color/whiteColor"
             android:textSize="26sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/home_detail_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_detail_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/marginHorizontal"
-            android:layout_marginTop="@dimen/marginHorizontal"
-            android:layout_marginBottom="@dimen/marginHorizontal"
-            android:text="@string/test_content"
-            android:textColor="@color/whiteColor"
-            android:textSize="18sp" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_home_detail"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

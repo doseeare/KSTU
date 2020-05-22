@@ -74,6 +74,7 @@
             android:id="@+id/profile_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textIsSelectable="true"
             android:layout_marginHorizontal="@dimen/marginHorizontal"
             android:layout_marginTop="8dp"
             android:textColor="@color/whiteColor"
