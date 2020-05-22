@@ -7,7 +7,7 @@ import com.kstu.kelbilim.R
 import com.kstu.kelbilim.common.GenericRecyclerAdapter
 import com.kstu.kelbilim.common.ViewHolder
 import com.kstu.kelbilim.service.response.studycard.CardDiciplines
-import com.timelysoft.shelter.utils.MyUtils
+import com.kstu.kelbilim.utils.MyUtils
 import kotlinx.android.synthetic.main.item_card.view.*
 
 class StudyCardAdapter(

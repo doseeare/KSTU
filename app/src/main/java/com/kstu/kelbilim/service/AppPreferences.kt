@@ -2,6 +2,7 @@ package com.kstu.kelbilim.service
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.kstu.kelbilim.service.response.payments.PaymentsResponse
 
 object AppPreferences {
 

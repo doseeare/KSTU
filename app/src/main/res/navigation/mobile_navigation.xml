@@ -47,4 +47,19 @@
         android:name="com.kstu.kelbilim.ui.card.CourseFragment"
         android:label="fragment_course"
         tools:layout="@layout/fragment_course" />
+    <fragment
+        android:id="@+id/scheduleDialogFragment"
+        android:name="com.kstu.kelbilim.ui.schedule.ScheduleDialogFragment"
+        android:label="fragment_schedule_dialog"
+        tools:layout="@layout/fragment_schedule_dialog" />
+    <fragment
+        android:id="@+id/notificationChannel"
+        android:name="com.kstu.kelbilim.ui.notifications.NotificationChannel"
+        android:label="fragment_notification_channel"
+        tools:layout="@layout/fragment_notification_channel" />
+    <fragment
+        android:id="@+id/notificationPoints"
+        android:name="com.kstu.kelbilim.ui.notifications.NotificationPoints"
+        android:label="fragment_notification_points"
+        tools:layout="@layout/fragment_notification_points" />
 </navigation>

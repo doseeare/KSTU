@@ -1,4 +1,4 @@
-package com.timelysoft.shelter.utils
+package com.kstu.kelbilim.utils
 
 import android.app.Activity
 import android.content.Context

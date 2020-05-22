@@ -6,14 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kstu.kelbilim.R
-import com.kstu.kelbilim.adapter.shedule.ScheduleAdapter
+import com.kstu.kelbilim.adapter.schedule.ScheduleAdapter
+import com.kstu.kelbilim.adapter.schedule.ScheduleItemListener
 import com.kstu.kelbilim.service.response.schedule.ScheduleDiciples
 import kotlinx.android.synthetic.main.fragment_schedule_weeks.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class ScheduleWeeksFragment(list : List<ScheduleDiciples>) : Fragment() {
+class ScheduleWeeksFragment(list : List<ScheduleDiciples>) : Fragment(), ScheduleItemListener {
 
     private val item = list
     override fun onCreateView(
@@ -31,6 +32,10 @@ class ScheduleWeeksFragment(list : List<ScheduleDiciples>) : Fragment() {
     }
 
     private fun initViews() {
-        schedule_rv.adapter = ScheduleAdapter(item as ArrayList<ScheduleDiciples>)
+        schedule_rv.adapter = ScheduleAdapter(item as ArrayList<ScheduleDiciples>, this)
+    }
+
+    override fun scheduleItemClicked(model: ScheduleDiciples) {
+        ScheduleDialogFragment(model).show(childFragmentManager, "ScheduleBottomFragment")
     }
 }

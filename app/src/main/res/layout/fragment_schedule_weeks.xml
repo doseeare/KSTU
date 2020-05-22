@@ -10,6 +10,7 @@
         android:id="@+id/schedule_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/item_schedule"
         android:orientation="vertical"
         android:background="@color/dark_bg"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

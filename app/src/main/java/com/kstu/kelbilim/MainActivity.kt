@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.kstu.kelbilim.ui.home.HomeFragment
 import com.kstu.kelbilim.utils.LoadingAlert
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(null)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
@@ -32,16 +33,20 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id){
                 R.id.navigation_home_detail -> hideBottomNav()
-                R.id.navigation_home -> showBottomNav()
             }
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+        showBottomNav()
         return true
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        showBottomNav()
+    }
     private fun hideBottomNav (){
         nav_view.visibility = View.GONE
     }

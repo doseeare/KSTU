@@ -100,4 +100,7 @@ dependencies {
     implementation "com.rizlee.view:rangeseekbar:1.0.0"
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //parse website
+    implementation 'org.jsoup:jsoup:1.13.1'
 }

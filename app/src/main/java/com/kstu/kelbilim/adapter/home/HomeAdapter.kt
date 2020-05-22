@@ -3,6 +3,7 @@ package com.kstu.kelbilim.adapter.home
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kstu.kelbilim.R
 import com.kstu.kelbilim.common.GenericRecyclerAdapter
 import com.kstu.kelbilim.common.ViewHolder
@@ -20,7 +21,11 @@ class HomeAdapter(
 
     override fun bind(item: HomeResponse, holder: ViewHolder) {
         holder.itemView.home_title.text = item.title
-        ViewCompat.setTransitionName(holder.itemView.home_imageview, "image_circle")
+
+        Glide.with(holder.itemView)
+            .load(item.imagePath)
+            .placeholder(R.drawable.ic_animeted_placeholder)
+            .into(holder.itemView.home_imageview)
 
         holder.itemView.setOnClickListener {
             listener.homeItemClicked(item, holder.itemView.home_imageview)

@@ -1,4 +1,4 @@
-package com.kstu.kelbilim.adapter.shedule
+package com.kstu.kelbilim.adapter.schedule
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +8,7 @@ import com.kstu.kelbilim.common.ViewHolder
 import com.kstu.kelbilim.service.response.schedule.ScheduleDiciples
 import kotlinx.android.synthetic.main.item_schedule.view.*
 
-class ScheduleAdapter(items: ArrayList<ScheduleDiciples> = ArrayList()) :
+class ScheduleAdapter(items: ArrayList<ScheduleDiciples> = ArrayList(), var listener: ScheduleItemListener) :
     GenericRecyclerAdapter<ScheduleDiciples>(items) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -23,6 +23,10 @@ class ScheduleAdapter(items: ArrayList<ScheduleDiciples> = ArrayList()) :
         view.schedule_lesson_type.text = item.studyTypeName
         view.schedule_teacher.text = item.teacherName
         view.schedule_time.text = item.time
+
+        view.setOnClickListener {
+            listener.scheduleItemClicked(item)
+        }
 
     }
 }

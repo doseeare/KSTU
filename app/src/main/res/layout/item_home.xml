@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="228dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="@dimen/marginHorizontal"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
@@ -14,17 +15,17 @@
 
         <com.kstu.kelbilim.utils.SquareImageView
             android:id="@+id/home_imageview"
+            tools:background="@drawable/test_image"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/test_image" />
+            android:scaleType="centerCrop"/>
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:alpha="0.3"
-            android:background="@color/blackColor"
             app:layout_constraintBottom_toBottomOf="@id/home_imageview"
+            android:background="@drawable/bg_news_title"
             app:layout_constraintEnd_toEndOf="@id/home_imageview"
             app:layout_constraintStart_toStartOf="@id/home_imageview"
             app:layout_constraintTop_toTopOf="@id/home_imageview" />
@@ -35,10 +36,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/marginHorizontal"
             android:layout_marginEnd="100dp"
-            android:text="Онлайн-выставка научных разработок"
+            tools:text="Онлайн-выставка научных разработок"
             android:textColor="@color/whiteColor"
+            android:maxLines="3"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="@id/home_imageview"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="@id/home_imageview"
             app:layout_constraintStart_toStartOf="@id/home_imageview" />
     </androidx.constraintlayout.widget.ConstraintLayout>

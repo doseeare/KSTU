@@ -18,6 +18,7 @@ import com.kstu.kelbilim.service.AppPreferences
 import com.kstu.kelbilim.service.Status
 import com.kstu.kelbilim.service.model.Authen
 import com.kstu.kelbilim.service.model.UserInfoModel
+import com.kstu.kelbilim.service.response.payments.PaymentsResponse
 import com.kstu.kelbilim.ui.start.StartActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,13 +27,22 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ProfileFragment : Fragment() {
     private val viewModel: ProfileViewModel by viewModel()
     private val header = RetrofitHeader()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_profile, container, false)
+    }
+
+    private fun initViews(data: PaymentsResponse) {
+        profile_name.text = data!!.fullName
+        profile_code.text = "Код платежа: ${data.account}"
+        profile_debt.text = "Долг: ${data.dolg}"
+        profile_group.text = data.groupName
+        profile_payments_rv.adapter =
+            ProfileAdapter(data.payments as ArrayList<Payments>)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -15,9 +15,12 @@
             android:id="@+id/schedule_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:background="?attr/colorPrimary"
-            app:tabIndicatorColor="#1E56E8"
-            app:tabTextColor="@drawable/bottom_nav_selector" />
+            app:tabGravity="fill"
+            app:tabMode="scrollable"
+            app:tabIndicatorColor="@color/tabIndicatorColor"
+            app:tabTextColor="@drawable/bottom_nav_selector"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -25,4 +28,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
