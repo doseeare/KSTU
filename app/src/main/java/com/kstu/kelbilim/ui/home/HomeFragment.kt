@@ -14,6 +14,7 @@ import com.kstu.kelbilim.adapter.home.HomeClickListener
 import com.kstu.kelbilim.service.response.HomeResponse
 import com.kstu.kelbilim.utils.MyUtils
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,48 +31,50 @@ class HomeFragment : Fragment(), HomeClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+       val view =  inflater.inflate(R.layout.fragment_home, container, false)
+        parseNews(view)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        parseNews()
     }
 
-    private fun parseNews() {
-        if (!MyUtils.isInternetAvailable()) {
-            val newsItem = ArrayList<HomeResponse>()
-            val webUrl = "https://kstu.kg"
-            CoroutineScope(Dispatchers.IO).launch {
-                val document = Jsoup.connect(webUrl).get()
-                val data: Elements? = document.select("div.grid__item")
+    private fun parseNews(view : View) {
+            if (!MyUtils.isInternetAvailable()) {
+                val newsItem = ArrayList<HomeResponse>()
+                val webUrl = "https://kstu.kg"
+                CoroutineScope(Dispatchers.IO).launch {
+                    val document = Jsoup.connect(webUrl).get()
+                    val data: Elements? = document.select("div.grid__item")
 
-                val dataSize = data!!.size
-                for (i in 0 until dataSize) {
-                    val imgUrl = webUrl + data.select("img.newsbox-header-image")
-                        .eq(i)
-                        .attr("src")
+                    val dataSize = data!!.size
+                    for (i in 0 until dataSize) {
+                        val imgUrl = webUrl + data.select("img.newsbox-header-image")
+                            .eq(i)
+                            .attr("src")
 
-                    val title = data.select("h4.newsbox-title")
-                        .eq(i)
-                        .text()
+                        val title = data.select("h4.newsbox-title")
+                            .eq(i)
+                            .text()
 
-                    val detailUrl = webUrl + data.select("a.corner-link")
-                        .eq(i)
-                        .attr("href")
+                        val detailUrl = webUrl + data.select("a.corner-link")
+                            .eq(i)
+                            .attr("href")
 
-                    newsItem.add(HomeResponse(imgUrl, title, detailUrl))
-                    Log.d("home", "img: $imgUrl, title: $title, detail: $detailUrl")
+                        newsItem.add(HomeResponse(imgUrl, title, detailUrl))
+                        Log.d("home", "img: $imgUrl, title: $title, detail: $detailUrl")
 
+                    }
+                    withContext(Dispatchers.Main) {
+                        homeAdapter = HomeAdapter(newsItem, listener)
+                        view.home_rv.adapter = homeAdapter
+                    }
                 }
-                withContext(Dispatchers.Main) {
-                    homeAdapter = HomeAdapter(newsItem, listener)
-                    home_rv.adapter = homeAdapter
-                }
+            } else {
+                Toast.makeText(context, "Проблемы с интернетом", Toast.LENGTH_SHORT).show()
             }
-        } else {
-            Toast.makeText(context, "Проблемы с интернетом", Toast.LENGTH_SHORT).show()
-        }
+
     }
 
     override fun homeItemClicked(homeResponse: HomeResponse, imageView: View) {

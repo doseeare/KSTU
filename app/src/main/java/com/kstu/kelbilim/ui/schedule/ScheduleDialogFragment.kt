@@ -36,13 +36,15 @@ class ScheduleDialogFragment(disciplines: ScheduleDiciples) : BottomSheetDialogF
         }
     }
 
-
     private fun getAuditory(text: String): String {
         return if (text.length == 4) {
             schedule_bs_imageview.setImageResource(R.drawable.image_1c)
             "Корпус: колледж, аудитория: ${text.substring(2, 4)}"
 
-        } else {
+        }else if (text.isEmpty()){
+            "Аудитория неизвестна"
+        }
+        else {
             schedule_bs_imageview.setImageResource(R.drawable.image_2c)
             "Корпус: ${text.substring(0, 1)}, аудитория: ${text.substring(2, 5)}"
         }

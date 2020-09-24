@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_schedule"
+    app:startDestination="@id/navigation_schedule">
+    <fragment
+        android:id="@+id/scheduleDialogFragment"
+        android:name="com.kstu.kelbilim.ui.schedule.ScheduleDialogFragment"
+        android:label="fragment_schedule_dialog"
+        tools:layout="@layout/fragment_schedule_dialog" />
+
+    <fragment
+        android:id="@+id/navigation_schedule_weeks"
+        android:name="com.kstu.kelbilim.ui.schedule.ScheduleWeeksFragment"
+        android:label="fragment_schedule_weeks  "
+        tools:layout="@layout/fragment_schedule_weeks" />
+
+    <fragment
+        android:id="@+id/navigation_schedule"
+        android:name="com.kstu.kelbilim.ui.schedule.ScheduleFragment"
+        android:label="@string/title_schedule"
+        tools:layout="@layout/fragment_schedule" />
+</navigation>
